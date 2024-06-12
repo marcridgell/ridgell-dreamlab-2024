@@ -37,22 +37,6 @@
     var map = L.map('map').setView(mapCenter, mapZoom);
 
     /* add map layer options */
-    var Stamen_WaterColor = L.tileLayer("https://tiles.stadiamaps.com/tiles/stamen_watercolor/%7Bz%7D/%7Bx%7D/%7By%7D.%7Bext%7D", {
-L.tileLayer('https://map1.vis.earthdata.nasa.gov/wmts-webmerc/VIIRS_CityLights_2012/default/%7Btime%7D/%7Btilematrixset%7D%7BmaxZoom%7D/%7Bz%7D/%7By%7D/%7Bx%7D.%7Bformat%7D', {
-    attribution: 'Imagery provided by services from the Global Imagery Browse Services (GIBS), operated by the NASA/GSFC/Earth Science Data and Information System (<a href="https://earthdata.nasa.gov">ESDIS</a>) with funding provided by NASA/HQ.',
-    bounds: [[-85.0511287776, -179.999999975], [85.0511287776, 179.999999975]],
-    minZoom: 1,
-    maxZoom: 8,
-    format: 'jpg',
-    time: '',
-    tilematrixset: 'GoogleMapsCompatible_Level'
-});
-L.tileLayer('https://tiles.stadiamaps.com/tiles/alidade_satellite/%7Bz%7D/%7Bx%7D/%7By%7D%7Br%7D.%7Bext%7D', {
-    minZoom: 0,
-    maxZoom: 20,
-    attribution: '&copy; CNES, Distribution Airbus DS, © Airbus DS, © PlanetObserver (Contains Copernicus Data) | &copy; <a href="https://www.stadiamaps.com/" target="_blank">Stadia Maps</a> &copy; <a href="https://openmaptiles.org/" target="_blank">OpenMapTiles</a> &copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors',
-    ext: 'jpg'
-});
     var Esri_WorldStreetMap = L.tileLayer('https://server.arcgisonline.com/ArcGIS/rest/services/World_Street_Map/MapServer/tile/{z}/{y}/{x}', {
         attribution: 'Tiles &copy; Esri &mdash; Source: Esri, DeLorme, NAVTEQ, USGS, Intermap, iPC, NRCAN, Esri Japan, METI, Esri China (Hong Kong), Esri (Thailand), TomTom, 2012'
     });
@@ -72,8 +56,7 @@ L.tileLayer('https://tiles.stadiamaps.com/tiles/alidade_satellite/%7Bz%7D/%7Bx%7
         "Esri World StreetMap": Esri_WorldStreetMap,
         "Esri National Geo": Esri_NatGeoWorldMap,
         "Esri Imagery": Esri_WorldImagery,
-        "Open Street Map": OpenStreetMap_Mapnik,
-        "Stamen Watercolor": Stamen_WaterColor
+        "Open Street Map": OpenStreetMap_Mapnik
     };
     L.control.layers(baseMaps).addTo(map);
     /* load base map */
