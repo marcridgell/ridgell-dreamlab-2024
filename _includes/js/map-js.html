@@ -7,7 +7,6 @@
 {%- assign items = site.data[site.metadata] | where_exp: 'item','item.objectid' | where_exp: 'item','item.parentid == nil' -%}
 {% endif %}
 {%- assign items = items | where_exp: 'item', 'item.objectid != nil' | where_exp: 'item','item.latitude' -%}
-
 {%- assign items = site.data[site.metadata] | where_exp: 'item','item.location contains "West"' -%}
 
 {%- assign fields = site.data.config-map -%}
@@ -150,12 +149,11 @@
         layer.bindPopup(popupTemplate);
     }
     /* function to add objects to map */
-    function objectMarkers(feature,latlng){
-        var marker = new L.CircleMarker(latlng, {
-             radius: 3,
-              color: "black",
-             alt: feature.properties.title
-        });
+    function objectMarkers(feature,latlng) {
+        var marker = L.marker(latlng, {alt: feature.properties.title});
+        {% if site.data.theme.map-cluster == true %}markers.addLayer(marker);{% endif %}
+        return marker;
+    }
 
     /* use geoJson features to add objects to map */
     var mapFeatures = L.geoJson(geodata, {
@@ -163,7 +161,11 @@
         pointToLayer: objectMarkers
     }){% if site.data.theme.map-cluster != true %}.addTo(map);{% else %};
     map.addLayer(markers);{% endif %}
-    
+    function objectMarkers(feature,latlng) {
+        var marker = L.marker(latlng, {alt: feature.properties.title});
+        {% if site.data.theme.map-cluster == true %}markers.addLayer(marker);{% endif %}
+        return marker;
+    }
     {% if site.data.theme.map-cluster == true and site.data.theme.map-search == true %}
     /* uncluster when search is clicked */
     document.querySelector('a.button').addEventListener("click", function() {
