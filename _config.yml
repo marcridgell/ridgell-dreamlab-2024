@@ -34,7 +34,7 @@ author: Marc Ridgell
 #
 # Set the metadata for your collection (the name of the csv file in your _data directory that describes the objects in your collection) 
 # Use the filename of your CSV **without** the ".csv" extension! E.g. _data/demo-metadata.csv --> "demo-metadata"
-metadata: clean2_dreamlab2024
+metadata: consumption and 1930s - clean_data_full
 
 ##########
 # Site/Organization Branding 
