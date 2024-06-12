@@ -7,6 +7,9 @@
 {%- assign items = site.data[site.metadata] | where_exp: 'item','item.objectid' | where_exp: 'item','item.parentid == nil' -%}
 {% endif %}
 {%- assign items = items | where_exp: 'item', 'item.objectid != nil' | where_exp: 'item','item.latitude' -%}
+
+{%- assign items = site.data[site.metadata] | where_exp: 'item','item.location contains "West"' -%}
+
 {%- assign fields = site.data.config-map -%}
 <!-- load leaflet dependencies -->
 <script src="{{ '/assets/lib/leaflet/leaflet.js' | relative_url }}"></script>
