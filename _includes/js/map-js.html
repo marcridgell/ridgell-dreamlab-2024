@@ -161,11 +161,34 @@
         pointToLayer: objectMarkers
     }){% if site.data.theme.map-cluster != true %}.addTo(map);{% else %};
     map.addLayer(markers);{% endif %}
-    function objectMarkers(feature,latlng) {
-        var marker = L.marker(latlng, {alt: feature.properties.title});
-        {% if site.data.theme.map-cluster == true %}markers.addLayer(marker);{% endif %}
-        return marker;
     }
+    function getColor(feature){
+  switch (feature.properties["subject"]) {
+            case 'school':
+              return  'orange';
+            case 'settlement house':
+              return 'green';
+            case 'church':
+              return 'blue';
+            case 'hotel':
+              return 'purple';
+            case 'dwelling':
+              return 'brown';
+            case 'mosque':
+              return 'lavender';
+default:
+              return 'black';
+          }
+        }
+    function objectMarkers(feature,latlng){
+   var marker = new L.CircleMarker(latlng, {
+             radius: 5,
+              color: getColor(feature)
+             alt: feature.properties.title,
+        });
+    return marker;
+    }
+    
     {% if site.data.theme.map-cluster == true and site.data.theme.map-search == true %}
     /* uncluster when search is clicked */
     document.querySelector('a.button').addEventListener("click", function() {
