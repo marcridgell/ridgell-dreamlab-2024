@@ -161,14 +161,6 @@
         pointToLayer: objectMarkers
     }){% if site.data.theme.map-cluster != true %}.addTo(map);{% else %};
     map.addLayer(markers);{% endif %}
-    function objectMarkers(feature,latlng){
-   var marker = new L.CircleMarker(latlng, {
-             radius: 5,
-              color: getColor(feature)
-             alt: feature.properties.title,
-        });
-    return marker;
-    }
     
     function objectMarkers(feature,latlng) {
         var marker = L.marker(latlng, {alt: feature.properties.title});
