@@ -162,24 +162,7 @@
     }){% if site.data.theme.map-cluster != true %}.addTo(map);{% else %};
     map.addLayer(markers);{% endif %}
     }
-    function getColor(feature){
-  switch (feature.properties["subject"]) {
-            case 'school':
-              return  'orange';
-            case 'settlement house':
-              return 'green';
-            case 'church':
-              return 'blue';
-            case 'hotel':
-              return 'purple';
-            case 'dwelling':
-              return 'brown';
-            case 'mosque':
-              return 'lavender';
-default:
-              return 'black';
-          }
-        }
+ 
     function objectMarkers(feature,latlng){
    var marker = new L.CircleMarker(latlng, {
              radius: 5,
