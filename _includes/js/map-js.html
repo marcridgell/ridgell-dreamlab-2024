@@ -149,14 +149,11 @@
         layer.bindPopup(popupTemplate);
     }
     /* function to add objects to map */
-function objectMarkers(feature,latlng){
-   var marker = new L.CircleMarker(latlng, {
-             radius: 5,
-              color: "black",
-             alt: feature.properties.title,
-        });
-    return marker;
-}
+    function objectMarkers(feature,latlng) {
+        var marker = L.marker(latlng, {alt: feature.properties.title});
+        {% if site.data.theme.map-cluster == true %}markers.addLayer(marker);{% endif %}
+        return marker;
+    }
 
     /* use geoJson features to add objects to map */
     var mapFeatures = L.geoJson(geodata, {
@@ -164,8 +161,20 @@ function objectMarkers(feature,latlng){
         pointToLayer: objectMarkers
     }){% if site.data.theme.map-cluster != true %}.addTo(map);{% else %};
     map.addLayer(markers);{% endif %}
+    function objectMarkers(feature,latlng){
+   var marker = new L.CircleMarker(latlng, {
+             radius: 5,
+              color: getColor(feature)
+             alt: feature.properties.title,
+        });
+    return marker;
     }
-
+    
+    function objectMarkers(feature,latlng) {
+        var marker = L.marker(latlng, {alt: feature.properties.title});
+        {% if site.data.theme.map-cluster == true %}markers.addLayer(marker);{% endif %}
+        return marker;
+    }
     {% if site.data.theme.map-cluster == true and site.data.theme.map-search == true %}
     /* uncluster when search is clicked */
     document.querySelector('a.button').addEventListener("click", function() {
