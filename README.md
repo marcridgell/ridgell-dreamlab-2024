@@ -1,11 +1,11 @@
-# CollectionBuilder-GH
+# DreamLab 2024
 
 A project to generate a free and simple digital collection site using [GitHub Pages](https://pages.github.com/) given:
 
 - a CSV of collection metadata
 - a folder of JPEG images, PDF documents, MP3s, or links to videos hosted on YouTube or Vimeo
 
-Visit the [demo site](https://collectionbuilder.github.io/collectionbuilder-gh/).
+Visit my [class project site](https://marcridgell.github.io/ridgell-dreamlab-2024/).
 
 ## Build a Digital Collection
 
